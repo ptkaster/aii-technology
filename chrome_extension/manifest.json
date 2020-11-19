@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "AII Internal Tools",
+  "description": "This extension will analyze pages (LinkedIn for now) and pull profiles, classifying them for race, gender, etc.",
+  "version": "1.0",
+  "browser_action": {
+   "default_icon": "icon.png",
+   "default_popup": "popup.html"
+  },
+  "permissions": [
+   "activeTab",
+   "downloads"
+   ]
+}
