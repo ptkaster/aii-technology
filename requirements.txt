@@ -2,3 +2,4 @@ ethnicolr
 flask
 flask_cors
 bs4
+deepface

@@ -1,6 +1,6 @@
 from sys import platform
 from bs4 import BeautifulSoup
-from deepface import DeepFace
+# from deepface import DeepFace
 import concurrent.futures
 import urllib.request
 import random
