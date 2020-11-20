@@ -8,16 +8,18 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route('/')
+def hello():
+    return "<h1 style='color:blue'>Hello There!</h1>"
 
-@app.route('/', methods=['POST'])
-def upload_file():
-    uploaded_file = request.files['file']
-    if uploaded_file.filename != '':
-        uploaded_file.filename = random.randrange(1000000, 99999999999)
-        filename = "api_uploaded_files/" + str(uploaded_file.filename) + ".html"
-        uploaded_file.save(filename)
-        parse.parse_linkedin_to_csv(filename)
-    return redirect("file:///Users/ptkaster/Desktop/aii-technology/upload.html")
+# @app.route('/', methods=['POST'])
+# def upload_file():
+#     uploaded_file = request.files['file']
+#     if uploaded_file.filename != '':
+#         uploaded_file.filename = random.randrange(1000000, 99999999999)
+#         filename = "api_uploaded_files/" + str(uploaded_file.filename) + ".html"
+#         uploaded_file.save(filename)
+#         parse.parse_linkedin_to_csv(filename)
+#     return redirect("file:///Users/ptkaster/Desktop/aii-technology/upload.html")
 
 @app.route('/textinput', methods=['POST'])
 def upload_text():
