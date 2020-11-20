@@ -1,1 +1,4 @@
 ethnicolr
+flask
+flask_cors
+bs4
