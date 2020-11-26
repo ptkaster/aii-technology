@@ -5,7 +5,7 @@ import htmlParsing as parse
 import json
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, support_credentials=True)
 
 @app.route('/')
 def hello():
