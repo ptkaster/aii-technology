@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, send_file
+from flask import Flask, render_template, request, redirect, url_for, send_file, jsonify
 from flask_cors import CORS
 import random
 import htmlParsing as parse
@@ -39,8 +39,44 @@ def get_linkedin_csv():
     with open(filename, 'w') as f:
         f.write(html)
         f.close()
+
     csv = parse.parse_linkedin_to_csv(filename)
-    return csv
+    resp = flask.Response(csv)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
+
+# @app.route('/api/mailchimp/initialize', methods=['GET'])
+# def api_id():
+#     # Check if an ID was provided as part of the URL.
+#     # If ID is provided, assign it to a variable.
+#     # If no ID is provided, display an error in the browser.
+#     if 'mailchimpkey' in request.args and 'accesscode' in request.args:
+#         apiCallResult = mailchimp.APICall(request.args['accesscode'], request.args['mailchimpkey'])
+#         print(apiCallResult)
+#         responseJson = {}
+#         if(apiCallResult['success']):
+#             responseJson['connected'] = 'true'
+#         else:
+#             responseJson['connected'] = 'false'
+#         responseJson['connectionError'] = apiCallResult['errorCode']
+#         # I can't get this to work every time to save my life so here we are
+#         try:
+#             responseJson['attorneyName'] = apiCallResult['attorneyFirm']
+#         except:
+#             responseJson['attorneyName'] = ''
+#         resp = flask.Response(str(responseJson))
+#         resp.headers['Access-Control-Allow-Origin'] = '*'
+#         return resp
+#     else:
+#         responseJson = {}
+#         responseJson['connected'] = 'false'
+#         responseJson['attorneyName'] = ''
+#         responseJson['connectionError'] = "Error: Mailchimp connection could not be established, please double check your key."
+#         resp = flask.Response(str(responseJson))
+#         resp.headers['Access-Control-Allow-Origin'] = '*'
+#         return resp
+#
+#     return jsonify(results)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000, host='0.0.0.0')
