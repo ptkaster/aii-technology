@@ -4,17 +4,28 @@ import random
 import htmlParsing as parse
 import json
 import os.path
+import os
 
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/')
 def hello():
-    return "<h1 style='color:blue'>Hello There!</h1>"
+    return redirect("https://annenberg.usc.edu/research/aii", code=302)
+
+@app.route('/static/images/<image>')
+def serve_image(image):
+    return app.send_static_file('site/images/' + image)
+
+@app.route('/static/html/<html>')
+def static_file(html):
+    return app.send_static_file('site/html/' + html)
 
 @app.route('/documentation/download_linkedin')
 def download_linkedin():
-    return app.send_static_file('site/html/download_linkedin.html')
+    with open('site/html/download_linkedin.html', 'r') as file:
+        return file.read()
+    # return app.send_static_file('site/html/download_linkedin.html')
 
 # @app.route('/', methods=['POST'])
 # def upload_file():
