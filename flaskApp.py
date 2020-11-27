@@ -3,13 +3,18 @@ from flask_cors import CORS
 import random
 import htmlParsing as parse
 import json
+import os.path
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/')
 def hello():
     return "<h1 style='color:blue'>Hello There!</h1>"
+
+@app.route('/documentation/download_linkedin')
+def download_linkedin():
+    return app.send_static_file('site/html/download_linkedin.html')
 
 # @app.route('/', methods=['POST'])
 # def upload_file():
