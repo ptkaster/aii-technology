@@ -5,7 +5,7 @@ import htmlParsing as parse
 import json
 
 app = Flask(__name__)
-CORS(app, support_credentials=True)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/')
 def hello():
@@ -39,11 +39,8 @@ def get_linkedin_csv():
     with open(filename, 'w') as f:
         f.write(html)
         f.close()
-
     csv = parse.parse_linkedin_to_csv(filename)
-    resp = flask.Response(csv)
-    resp.headers['Access-Control-Allow-Origin'] = '*'
-    return resp
+    return csv
 
 # @app.route('/api/mailchimp/initialize', methods=['GET'])
 # def api_id():
@@ -79,4 +76,4 @@ def get_linkedin_csv():
 #     return jsonify(results)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    app.run(debug=True, port=8000)
