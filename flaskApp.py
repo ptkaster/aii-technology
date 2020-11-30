@@ -21,7 +21,7 @@ def serve_loader_static():
 @app.route('/server/pullgithub')
 def git_pull():
     try:
-        return os.system("git pull")
+        return str(os.system("git pull"))
         os.system("systemctl reboot -i")
         return "Executed command"
     except Exception as asc:
