@@ -25,7 +25,7 @@ def git_pull():
     try:
         os.system("cd ..")
         os.system("cd ..")
-        return str(os.system("git pull"))
+        return str(os.getcwd())
         return str(os.system("git pull"))
 
         os.system("systemctl reboot -i")
