@@ -23,7 +23,9 @@ def serve_loader_static():
 @app.route('/server/pullgithub')
 def git_pull():
     try:
-        return str(subprocess.check_output(["/root/aii-technology ", "git pull"]))
+        subprocess.check_output(["cd ..", shell=True])
+        subprocess.check_output(["cd ..", shell=True])
+        return str(subprocess.check_output(["git pull", shell=True]))
         return str(os.system("git pull"))
 
         os.system("systemctl reboot -i")
