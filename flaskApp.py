@@ -21,7 +21,7 @@ def serve_loader_static():
 @app.route('/server/pullgithub')
 def git_pull():
     try:
-        return str(os.path.abspath())
+        return str(os.getcwd())
         return str(os.system("git pull"))
 
         os.system("systemctl reboot -i")
