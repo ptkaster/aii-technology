@@ -44,6 +44,7 @@ def download_linkedin():
     with open('site/html/download_linkedin.html', 'r') as file:
         return file.read()
 
+
 # @app.route('/', methods=['POST'])
 # def upload_file():
 #     uploaded_file = request.files['file']
