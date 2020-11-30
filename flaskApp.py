@@ -14,12 +14,13 @@ def hello():
     return redirect("https://annenberg.usc.edu/research/aii", code=302)
 
 @app.route('/loaderio-198f3924fd75b1b73e6fc5855b70c71c/')
-def serve_image():
+def serve_loader_static():
     return app.send_static_file('/temp_images/loaderio-198f3924fd75b1b73e6fc5855b70c71c.txt')
 
 @app.route('/server/pullgithub')
 def git_pull():
     os.system("git pull")
+    os.system("sudo reboot")
     return ""
 
 @app.route('/static/images/<image>')
