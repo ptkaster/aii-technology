@@ -43,7 +43,6 @@ def static_file(html):
 def download_linkedin():
     with open('site/html/download_linkedin.html', 'r') as file:
         return file.read()
-    # return app.send_static_file('site/html/download_linkedin.html')
 
 # @app.route('/', methods=['POST'])
 # def upload_file():
