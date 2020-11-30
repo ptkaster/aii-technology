@@ -13,6 +13,10 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 def hello():
     return redirect("https://annenberg.usc.edu/research/aii", code=302)
 
+@app.route('/loaderio-198f3924fd75b1b73e6fc5855b70c71c/')
+def serve_image():
+    return app.send_static_file('/temp_images/loaderio-198f3924fd75b1b73e6fc5855b70c71c.txt')
+
 @app.route('/static/images/<image>')
 def serve_image(image):
     return app.send_static_file('site/images/' + image)

@@ -20,10 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log(params)
 
       const Http = new XMLHttpRequest();
-      const url='http://127.0.0.1:8000/get_linkedin_csv';
+      const url='https://www.annenberginclusioninitiative.org/get_linkedin_csv';
       Http.open("POST", url);
       Http.setRequestHeader("Content-Type", "text/html");
       Http.send(JSON.stringify(params));
+      console.log(url)
       var blob_object;
       var download_count = 0;
 
