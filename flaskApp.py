@@ -17,15 +17,13 @@ def hello():
 
 @app.route('/loaderio-198f3924fd75b1b73e6fc5855b70c71c')
 def serve_loader_static():
-    return app.send_static_file('/temp_images/loaderio-198f3924fd75b1b73e6fc5855b70c71c.txt')
+    return "loaderio-198f3924fd75b1b73e6fc5855b70c71c"
 
 @app.route('/server/pullgithub')
 def git_pull():
     try:
-        os.system("cd ..")
-        os.system("cd ..")
         # return str(os.getcwd())
-        return str(os.system("/root/aii-technology git pull"))
+        return str(os.system("/root/aii-technology/ git pull"))
 
         os.system("systemctl reboot -i")
         return "Executed command"
