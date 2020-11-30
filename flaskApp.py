@@ -23,6 +23,7 @@ def git_pull():
     try:
         os.system("git pull")
         os.system("systemctl reboot -i")
+        return "Executed command"
     except Exception as asc:
         return str(asc)
 
