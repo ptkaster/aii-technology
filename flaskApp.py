@@ -27,6 +27,7 @@ def git_pull():
     except Exception as asc:
         return str(asc)
 
+
 @app.route('/static/images/<image>')
 def serve_image(image):
     return app.send_static_file('site/images/' + image)
