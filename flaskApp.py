@@ -6,6 +6,7 @@ import json
 import os.path
 import os
 import subprocess
+import sys
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -22,7 +23,7 @@ def serve_loader_static():
 @app.route('/server/pullgithub')
 def git_pull():
     try:
-        return str(subprocess.run(["git", "pull"]))
+        return str(subprocess.run([sys.executable, "git pull"]))
         return str(os.system("git pull"))
 
         os.system("systemctl reboot -i")
