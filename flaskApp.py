@@ -20,9 +20,11 @@ def serve_loader_static():
 
 @app.route('/server/pullgithub')
 def git_pull():
-    os.system("git pull")
-    os.system("systemctl reboot -i")
-    return ""
+    try:
+        os.system("git pull")
+        os.system("systemctl reboot -i")
+    except Exception as asc:
+        return str(asc)
 
 @app.route('/static/images/<image>')
 def serve_image(image):
